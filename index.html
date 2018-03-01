@@ -8,8 +8,23 @@
   </div>
   <script>
 (function(){
-
-})
+  var container = document.querySelector("#container");
+  for (var i = 0; i < 16; i++){
+    var div = document.createElement("div");
+    div.className = "row";
+    div.style.margins = "0 0 0 0";
+    for (var j = 1; j <= 16; j++){
+      var cell = document.createElement("div");
+      cell.className = "gridSquare";
+      cell.style.height = "35px";
+      cell.style.border = "thin solid black";
+      cell.style.display = "inline-block";
+      cell.style.width = "6%";
+      div.appendChild(cell);
+        }
+        container.appendChild(div);
+      }
+})();
   </script>
 </body>
 </html>
