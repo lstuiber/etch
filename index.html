@@ -9,6 +9,9 @@
   <script>
 (function(){
   var container = document.querySelector("#container");
+  container.style.border = "thick solid red";
+  container.style.margin = "50px 0px 0px 20px";
+  container.style.width = "1000px";
     for (var i = 0; i < 16; i++){
     var div = document.createElement("div");
     div.style.marginBottom = "-5px";
@@ -17,15 +20,25 @@
     for (var j = 1; j <= 16; j++){
       var cell = document.createElement("div");
       cell.className = "gridSquare";
-      cell.style.height = "35px";
-      cell.style.border = "thin solid black";
+      cell.style.height = "3px";
+      cell.style.border = "thin dotted black";
       cell.style.display = "inline-block";
-      cell.style.width = "6%";
+      cell.style.width = Math.floor(1000/17)+"px";
+
+      cell.id = "grid"+((i*16)+j);
       div.appendChild(cell);
         }
         container.appendChild(div);
       }
+      var hov = document.getElementsByClassName("gridSquare");
+      for (var i = 0; i < hov.length; i++){
+      hov[i].addEventListener("mouseover", function(event){
+        event.target.style.backgroundColor = "#031"+[i++];
+
+      });
+}
 })();
+
   </script>
 </body>
 </html>
