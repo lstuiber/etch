@@ -8,10 +8,17 @@
   </div>
   <script>
 (function(){
+var body =  document.body;
+  body.style.width = "100%";
+  body.style.height = "100%";
   var container = document.querySelector("#container");
   container.style.border = "thick solid red";
   container.style.margin = "50px 0px 0px 20px";
-  container.style.width = "1000px";
+  container.style.width = 500/(16*16);
+  container.style.height = "500px";
+  container.style.display = "inline-block";
+  container.style.position = "absolute";
+  container.style.left = "15%";
     for (var i = 0; i < 16; i++){
     var div = document.createElement("div");
     div.style.marginBottom = "-5px";
@@ -20,20 +27,20 @@
     for (var j = 1; j <= 16; j++){
       var cell = document.createElement("div");
       cell.className = "gridSquare";
-      cell.style.height = "3px";
+      cell.style.height = "50px";
       cell.style.border = "thin dotted black";
       cell.style.display = "inline-block";
       cell.style.width = Math.floor(1000/17)+"px";
-
       cell.id = "grid"+((i*16)+j);
       div.appendChild(cell);
+
         }
         container.appendChild(div);
       }
       var hov = document.getElementsByClassName("gridSquare");
       for (var i = 0; i < hov.length; i++){
       hov[i].addEventListener("mouseover", function(event){
-        event.target.style.backgroundColor = "#031"+[i++];
+        event.target.style.backgroundColor = ("#"+Math.floor(Math.random(1000)+1000));
 
       });
 }
