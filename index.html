@@ -4,9 +4,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-
+  <button id="reset">Reset</button>
   <div id="container" class="container">
   </div>
+  <button id= "black">Black</button>
+  <button id="blue">Blue</button>
+  <button id="random">Random</button>
   <script>
   let n = 50;
 ////    body.style.width = "100%";
@@ -23,7 +26,7 @@ document.querySelector(".container").style.height = "500px";
 document.querySelector(".container").style.maxWidth= "100%";
   //  container.style.border = "1px solid red";
 
-(function(){
+(function load(){
 
 
   console.log(container);
@@ -49,6 +52,7 @@ container.appendChild(cell);
       })
 }
 })();
+
 
   </script>
 </body>
