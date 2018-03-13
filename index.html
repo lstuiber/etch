@@ -4,12 +4,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <button id="reset">Reset</button>
+  <div class="center">
+  <button id="reset">Reset</button></div>
   <div id="container" class="container">
   </div>
+  <div class="center">
   <button id= "black">Black</button>
   <button id="blue">Blue</button>
-  <button id="random">Random</button>
+  <button id="random">Random</button></div>
   <script>
   let n = 50;
 ////    body.style.width = "100%";
@@ -21,10 +23,39 @@
     document.querySelector(".container").style.margin = "0 auto";
     document.querySelector(".container").style.display = "block";
     document.querySelector(".container").style.width = 500/n*n;
-    document.querySelector(".container").style.border = "1px solid red";
+    document.querySelector(".container").style.border = "1px solid black";
 document.querySelector(".container").style.height = "500px";
 document.querySelector(".container").style.maxWidth= "100%";
   //  container.style.border = "1px solid red";
+
+var button = document.getElementsByClassName("center");
+console.log(button);
+for (var i = 0; i<button.length; i++){
+
+  button[i].style.textAlign = "center";
+
+}
+var buts = document.getElementsByTagName("button");
+buts[1].style.background = "black";
+buts[1].style.color = "white";
+
+buts[1].style.transition = "shadow .3s";
+buts[1].addEventListener("mouseover", function(event){
+  event.target.style.color = "gray";
+  event.target.style.border = "3px  solid yellow";
+})
+buts[1].addEventListener("mouseleave", function(event){
+  event.target.style.color = "white";
+  event.target.style.border = "none";
+})
+for (var i =0;i<buts.length;i++){
+  buts[i].style.display = "inline-block"
+  buts[i].style.margin = "0 auto";
+  buts[i].style.marginTop = "20px";
+  buts[i].style.marginBottom = "20px";
+  buts[i].style.padding = "20 50 20 50";
+  buts[i].style.margin = "20 18 20 18";
+}
 
 (function load(){
 
@@ -44,13 +75,42 @@ container.appendChild(cell);
         }
 
       }
+
       var hov = document.getElementsByClassName("gridSquare");
       for (var i = 0; i < hov.length; i++){
       hov[i].addEventListener("mouseover", function(event){
-        event.target.style.background = ("#2049");
-
+      event.target.style.background = "black";})}
+      document.getElementById("black").addEventListener("click", function(event){
+        for (var i = 0; i < hov.length; i++){
+        hov[i].addEventListener("mouseover", function(event){
+        event.target.style.background = "black";})
+      }
       })
-}
+      document.getElementById("blue").addEventListener("click", function(event){
+        for (var i = 0; i < hov.length; i++){
+        hov[i].addEventListener("mouseover", function(event){
+        event.target.style.background = "blue";})
+      }
+      })
+      document.getElementById("reset").addEventListener("click", function(event){
+        for (var i =0; i< hov.length; i++){
+          hov[i].style.background = "white";
+          hov[i].addEventListener("mouseover", function(event){
+          event.target.style.background = "black";})
+        }
+      })
+      document.getElementById("random").addEventListener("click", function(event){
+        for (var i = 0; i < hov.length; i++){
+        hov[i].addEventListener("mouseover", function(event){
+        event.target.style.background = "rgb("+(Math.floor(Math.random()*256))+","+(Math.floor(Math.random()*256))+","+(Math.floor(Math.random()*256))+")";})
+      }
+      })
+  /*    for (var i = 0; i < hov.length; i++){
+      hov[i].addEventListener("mouseover", function(event){
+        event.target.style.background = "black";
+
+      })*/
+
 })();
 
 
