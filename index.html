@@ -14,6 +14,53 @@
   <button id="random">Random</button></div>
   <script>
   let n = 50;
+  var blackclick = false;
+  var blueclick = false;
+  var randclick = false;
+  function check(){
+    if (blackclick){
+      document.getElementById("black").addEventListener("mouseout", function(event){
+        document.getElementById("blue").style.background = "";
+        document.getElementById("blue").style.color = "";
+        document.getElementById("random").style.background = "";
+        document.getElementById("random").style.color = "";
+        event.target.style.background = "black";
+        event.target.style.color = "white";})
+    } else {
+  document.getElementById("black").addEventListener("mouseout", function(event){
+    event.target.style.background = "";
+    event.target.style.color = "";})
+}
+if (blueclick){
+  document.getElementById("blue").addEventListener("mouseout", function(event){
+    event.target.style.background = "blue";
+    event.target.style.color = "white";
+    document.getElementById("black").style.background = "";
+    document.getElementById("black").style.color = "";
+    document.getElementById("random").style.background = "";
+    document.getElementById("random").style.color = "";
+  })
+
+} else {
+document.getElementById("blue").addEventListener("mouseout", function(event){
+event.target.style.background = "";
+event.target.style.color = "";})
+}
+if (randclick){
+  document.getElementById("random").addEventListener("mouseout", function(event){
+    event.target.style.background = "rgb("+(Math.floor(Math.random()*256))+","+(Math.floor(Math.random()*256))+","+(Math.floor(Math.random()*256))+")";
+    event.target.style.color = "white";
+    document.getElementById("blue").style.background = "";
+    document.getElementById("blue").style.color = "";
+    document.getElementById("black").style.background = "";
+    document.getElementById("black").style.color = "";
+  })
+} else {
+document.getElementById("random").addEventListener("mouseout", function(event){
+event.target.style.background = "";
+event.target.style.color = "";})
+}
+}
 ////    body.style.width = "100%";
   //  body.style.height = "100%";
     console.log(document.getElementById("container"));
@@ -33,21 +80,13 @@ console.log(button);
 for (var i = 0; i<button.length; i++){
 
   button[i].style.textAlign = "center";
-
+  button[i].style.border = "thin solid transparent"
 }
 var buts = document.getElementsByTagName("button");
-buts[1].style.background = "black";
-buts[1].style.color = "white";
 
-buts[1].style.transition = "shadow .3s";
-buts[1].addEventListener("mouseover", function(event){
-  event.target.style.color = "gray";
-  event.target.style.border = "3px  solid yellow";
-})
-buts[1].addEventListener("mouseleave", function(event){
-  event.target.style.color = "white";
-  event.target.style.border = "none";
-})
+buts[1].style.border = "thin solid black";
+
+
 for (var i =0;i<buts.length;i++){
   buts[i].style.display = "inline-block"
   buts[i].style.margin = "0 auto";
@@ -77,19 +116,51 @@ container.appendChild(cell);
       }
 
       var hov = document.getElementsByClassName("gridSquare");
+      check();
       for (var i = 0; i < hov.length; i++){
       hov[i].addEventListener("mouseover", function(event){
       event.target.style.background = "black";})}
+      document.getElementById("black").addEventListener("mouseover", function(event){
+
+        event.target.style.background = "black";
+        event.target.style.color = "white";
+      })
+      document.getElementById("blue").addEventListener("mouseover", function(event){
+
+        event.target.style.background = "blue";
+        event.target.style.color = "white";
+      })
+
+      document.getElementById("random").addEventListener("mouseover", function(event){
+        event.target.style.background = "rgb("+(Math.floor(Math.random()*256))+","+(Math.floor(Math.random()*256))+","+(Math.floor(Math.random()*256))+")";
+        event.target.style.color = "white";
+      })
+
+
       document.getElementById("black").addEventListener("click", function(event){
         for (var i = 0; i < hov.length; i++){
         hov[i].addEventListener("mouseover", function(event){
-        event.target.style.background = "black";})
-      }
+        event.target.style.background = "black";})}
+        event.target.style.background = "black";
+        event.target.style.color = "white";
+        document.getElementById("blue").style.background = "";
+        document.getElementById("blue").style.color = "";
+        document.getElementById("random").style.background = "";
+        document.getElementById("random").style.color = "";
+        blackclick = true;
+        check();
       })
+
       document.getElementById("blue").addEventListener("click", function(event){
         for (var i = 0; i < hov.length; i++){
         hov[i].addEventListener("mouseover", function(event){
         event.target.style.background = "blue";})
+        document.getElementById("black").style.background = "";
+        document.getElementById("black").style.color = "";
+        document.getElementById("random").style.background = "";
+        document.getElementById("random").style.color = "";
+        blueclick = true;
+        check();
       }
       })
       document.getElementById("reset").addEventListener("click", function(event){
@@ -103,6 +174,8 @@ container.appendChild(cell);
         for (var i = 0; i < hov.length; i++){
         hov[i].addEventListener("mouseover", function(event){
         event.target.style.background = "rgb("+(Math.floor(Math.random()*256))+","+(Math.floor(Math.random()*256))+","+(Math.floor(Math.random()*256))+")";})
+        randclick = true;
+        check();
       }
       })
   /*    for (var i = 0; i < hov.length; i++){
